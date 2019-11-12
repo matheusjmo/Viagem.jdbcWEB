@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Empresa de Turismo</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panel id="Cadastro" header="Cadastro" toggleable="true"
+			toggleSpeed="500" closeSpeed="500" widgetVar="panel"
+			style="margin-bottom:0px">
+			<h:outputLabel value="Codigo: " />
+			<p:inputText value="#{ViagemBean.viagem.codigo}" />
+			<br />
+			<h:outputLabel value="Nome: " />
+			<p:inputText value="#{ViagemBean.viagem.nome}" />
+			<br />
+			<h:outputLabel value="Preço: " />
+			<p:inputText value="#{ViagemBean.viagem.preco}" />
+			<br />
+			<h:outputLabel value="Lugar de Viagem: " />
+			<p:inputText value="#{ViagemBean.viagem.lugar}" />
+			<br />
+			<div align="center" draggable="false" >
+			<p:fileUpload value="fotos" text="fotos" action="#{ViagemBean.viagem.fotos}" mode="simple"
+				skinSimple="true" />
+			<br /></div>
+			<div align="center" draggable="false" >
+			<p:commandButton value="Cadastrar" update="@form"
+				action="#{ViagemBean.cadastrar}" /></div>
+		</p:panel>
+		<p:panel style="margin-bottom:0px">
+			<p:dataTable var="Viagens" value="#{ViagemBean.listaViagens}"
+				reflow="true">
+				<p:column headerText="Codigo">
+					<h:outputText value="#{Viagens.codigo}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{Viagens.nome}" />
+				</p:column>
+
+				<p:column headerText="Preço">
+					<h:outputText value="#{Viagens.preco}" />
+				</p:column>
+
+				<p:column headerText="Lugar">
+					<h:outputText value="#{Viagens.lugar}" />
+				</p:column>
+
+				<p:column headerText="Fotos">
+					<h:graphicImage value="#{Viagens.fotos}" />
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
